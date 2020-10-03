@@ -44,6 +44,7 @@ const nextSequence = () => {
 
 }
 
+
 $(".btn").click(function() {
     let userChosenColour = $(this).attr("id");
 
@@ -95,6 +96,8 @@ const checkAnswer = (currentLevel) => {
         startOver();
     }
 }
+
+
 
 const startOver = () => {
     // reset all variables.

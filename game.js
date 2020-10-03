@@ -67,3 +67,31 @@ const animatePress = (currentColour) => {
         $(`#${currentColour}`).removeClass("pressed");
     }, 100);
 }
+
+const checkAnswer = (currentLevel) => {
+    // check if the last items in the two arrays are the same
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+        console.log("Success");
+        
+        // start a new sequence when the user has correctly clicked the buttons selected by the game
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(function() {
+                nextSequence();
+            }, 1000);
+        }
+    }
+    else {
+        console.log("Wrong");
+        playSound("wrong");
+        $("body").addClass("game-over");
+
+        setTimeout(function() {
+            $("body").removeClass("game-over");
+        }, 200);
+
+        $("#level-title").text("Game Over, Press Any Key to Restart");
+
+        // start the game over
+        startOver();
+    }
+}

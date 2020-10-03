@@ -43,3 +43,27 @@ const nextSequence = () => {
     playSound(randomChosenColour);
 
 }
+
+$(".btn").click(function() {
+    let userChosenColour = $(this).attr("id");
+
+    // as a user clicks a button following the random button chosen by the game, it is added to the userClickedPattern array
+    userClickedPattern.push(userChosenColour);
+
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+    checkAnswer(userClickedPattern.length - 1);
+});
+
+const playSound = (name) => {
+    const audio = new Audio(`sounds/${name}.mp3`);
+    audio.play();
+}
+
+const animatePress = (currentColour) => {
+    $(`#${currentColour}`).addClass("pressed");
+
+    setTimeout(function () {
+        $(`#${currentColour}`).removeClass("pressed");
+    }, 100);
+}

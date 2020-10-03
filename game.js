@@ -95,3 +95,10 @@ const checkAnswer = (currentLevel) => {
         startOver();
     }
 }
+
+const startOver = () => {
+    // reset all variables.
+    level = 0;
+    gamePattern = [];
+    started = false;
+}

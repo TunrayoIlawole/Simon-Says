@@ -22,3 +22,24 @@ $(document).keypress(function() {
         started = true;
     }
 });
+
+const nextSequence = () => {
+    userClickedPattern = [];
+    level++;
+
+    $("#level-title").text(`Level ${level}`);
+
+    const randomNumber = Math.floor(Math.random() * 4);
+
+    // when the game starts, a random button is chosen
+    const randomChosenColour = buttonColours[randomNumber];
+
+    // The buttons chosen are pushed into the game pattern array to be sequentially followed by the user
+    gamePattern.push(randomChosenColour);
+
+
+    $(`#${randomChosenColour}`).fadeIn(100).fadeOut(100).fadeIn(100);
+
+    playSound(randomChosenColour);
+
+}
